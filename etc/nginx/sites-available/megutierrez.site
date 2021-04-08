@@ -1,0 +1,14 @@
+# Second server configuration - this server is only responsible of hosting the 
+# source code of the static webpage and storage
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/megutierrez.site;
+
+	server_name 10.0.0.2;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
