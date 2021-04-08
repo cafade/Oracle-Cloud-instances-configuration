@@ -27,21 +27,19 @@ by linking the right file to sites-enabled
     as per: https://www.linode.com/community/questions/19393/encrypt-function-not-working-following-linode-process-for-mailserver-setup,
     but still didn't work
         - I had to modify the table to have only varchar(512) in the password column and manually encrypted the the password with:
+
         ```
         sudo doveadm pw -s SHA512-CRYPT
         ```
   <br/>
-  <br/>
     - most other steps worked correctly, but the configuration said to use a folder to store incoming mail instead of a file like:
+
 ```
 mail -f /var/mail/vhosts/example.com/email1
 ```
-  <br/>
   <br/>
     - fixed this by creating a folder with the name of the mail i.e. email1 and a folder inside of this directory called tmp:
 
 ```
 /var/mail/vhosts/<example@email.com>/<example-user>/tmp
 ```
-
-
