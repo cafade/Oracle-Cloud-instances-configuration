@@ -11,4 +11,9 @@ server {
 	location / {
 		try_files $uri $uri/ =404;
 	}
+
+        location /notes {   
+                alias /var/www/megutierrez.site-notes;
+                index index.html;
+        }  
 }
