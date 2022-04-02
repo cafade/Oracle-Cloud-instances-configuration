@@ -1,0 +1,25 @@
+# OpenVPN serverse proxy
+
+# server {
+# 	listen 51819 udp;
+# 	listen [::]:51819 udp;
+# 	proxy_pass 10.0.0.2:51819;
+# 	proxy_bind 10.0.0.222:51819 transparent;
+# 	proxy_connect_timeout 300s; 
+# 	proxy_timeout 300s;
+# 
+# }
+
+
+server {
+ 	listen 51819 udp;
+ 	listen [::]:51819 udp;
+	proxy_connect_timeout 300s;
+ 	proxy_bind 10.0.0.222:51819 transparent;
+	proxy_timeout 300s;
+	proxy_pass backend;
+}
+upstream backend {
+	hash $remote_addr consistent;
+ 	server 10.0.0.2:51819;
+}
